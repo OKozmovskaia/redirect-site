@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect site</title>
+</head>
+<body>
+    <p>Please wait while we redirect you to Olga-Store-Manager...</p>
+    <p><a href="javascript:redirectToApp()">Open Olga-Store-Manager</a></p>
+    <script>
+      var redirectToApp = function() {
+        const scheme = "storemanager";
+        const openURL = "feed" + window.location.pathname + window.location.search + window.location.hash;
+        const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const Android = /Android/.test(navigator.userAgent);
+        let newLocation = '';
+
+        if (iOS) {
+          newLocation = scheme + ":" + openURL;
+        } else if (Android) {
+          newLocation = "intent://" + openURL + "#Intent;scheme=" + scheme + ";package=com.olgastoremanager;end";
+        } else {
+          newLocation = scheme + "://" + openURL;
+        }
+        console.log(newLocation)
+        window.location.replace(newLocation);
+      }
+      window.onload = redirectToApp;
+    </script>
+</body>
+</html>
