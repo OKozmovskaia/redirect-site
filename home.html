@@ -8,15 +8,24 @@
   <title>Redirect site</title>
 </head>
 <body>
-    <div class="infoContainer">
+    <div class="buttonContainer">
       <p class="infoText">If redirect to your application did not happen automatically, click on this button</p>
       <p class="infoButton">
         <a href="javascript:redirectToApp()">Open app</a>
       </p>
     </div>
+
+    <div class="buttonContainer">
+      <p class="cloudButton">
+        <a href="javascript:redirectToNewUser()">User not known</a>
+      </p>
+      <p class="cloudButton">
+        <a href="javascript:redirectToExistUser()">User known</a>
+      </p>
+    </div>
     
     <script>
-      var redirectToApp = function() {
+      function redirectToApp () {
         const scheme = "storemanager";
         const openURL = "feed" + window.location.pathname + window.location.search + window.location.hash;
         const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -34,6 +43,42 @@
         window.location.replace(newLocation);
       }
       window.onload = redirectToApp;
+
+      function redirectToNewUser () {
+        const scheme = "storemanager";
+        const openURL = "new-user" + window.location.pathname + window.location.search + window.location.hash;
+        const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const Android = /Android/.test(navigator.userAgent);
+        let newLocation = '';
+
+        if (iOS) {
+          newLocation = scheme + ":" + openURL;
+        } else if (Android) {
+          newLocation = "intent://" + openURL + "#Intent;scheme=" + scheme + ";package=com.olgastoremanager;end";
+        } else {
+          newLocation = scheme + "://" + openURL;
+        }
+        console.log(newLocation)
+        window.location.replace(newLocation);
+      }
+
+      function redirectToExistUser () {
+        const scheme = "storemanager";
+        const openURL = "exist-user" + window.location.pathname + window.location.search + window.location.hash;
+        const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const Android = /Android/.test(navigator.userAgent);
+        let newLocation = '';
+
+        if (iOS) {
+          newLocation = scheme + ":" + openURL;
+        } else if (Android) {
+          newLocation = "intent://" + openURL + "#Intent;scheme=" + scheme + ";package=com.olgastoremanager;end";
+        } else {
+          newLocation = scheme + "://" + openURL;
+        }
+        console.log(newLocation)
+        window.location.replace(newLocation);
+      }
     </script>
 </body>
 </html>
