@@ -1,0 +1,26 @@
+.infoContainer {
+  margin: 2em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoText {
+  font-weight: bold;
+}
+
+.infoButton {
+  border: 1px solid blue;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: blue;
+}
+
+a {
+  color: aliceblue;
+  text-decoration: none;
+}

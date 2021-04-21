@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
   <title>Redirect site</title>
 </head>
 <body>
-    <p>Please wait while we redirect you to Olga-Store-Manager...</p>
-    <p><a href="javascript:redirectToApp()">Open Olga-Store-Manager</a></p>
+    <div class="infoContainer">
+      <p class="infoText">If redirect to your application did not happen automatically, click on this button</p>
+      <p class="infoButton">
+        <a href="javascript:redirectToApp()">Open app</a>
+      </p>
+    </div>
+    
     <script>
       var redirectToApp = function() {
         const scheme = "storemanager";
